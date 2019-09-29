@@ -1,9 +1,8 @@
 from sqlalchemy import Boolean
 from sqlalchemy import Column
 from sqlalchemy import create_engine
-from sqlalchemy import DateTime
+from sqlalchemy import Float
 from sqlalchemy import ForeignKey
-from sqlalchemy import func
 from sqlalchemy import Integer
 from sqlalchemy import MetaData
 from sqlalchemy import String
@@ -34,6 +33,64 @@ teams = Table(
 	Column("strength_attack_away", Integer),
 	Column("strength_defence_home", Integer),
 	Column("strength_defence_away", Integer),
+)
+
+players = Table(
+	"players",
+	metadata,
+	Column("chance_of_playing_next_round", Float),
+	Column("chance_of_playing_this_round", Float),
+	Column("code", Integer),
+	Column("cost_change_event", Integer),
+	Column("cost_change_event_fall", Integer),
+	Column("cost_change_start", Integer),
+	Column("cost_change_start_fall", Integer),
+	Column("dreamteam_count", Integer),
+	Column("element_type", Integer),
+	Column("ep_next", Float),
+	Column("ep_this", Float),
+	Column("event_points", Integer),
+	Column("first_name", String(50)),
+	Column("form", Float),
+	Column("id", Integer, primary_key=True),
+	Column("in_dreamteam", Boolean),
+	Column("news", String(200)),
+	Column("news_added", String(50)),
+	Column("now_cost", Integer),
+	Column("photo", String(50)),
+	Column("points_per_game", Float),
+	Column("second_name", String(50)),
+	Column("selected_by_percent", Float),
+	Column("special", Boolean),
+	Column("squad_number", String(50)),
+	Column("status", String(50)),
+	Column("team", Integer),
+	Column("team_code", Integer),
+	Column("total_points", Integer),
+	Column("transfers_in", Integer),
+	Column("transfers_in_event", Integer),
+	Column("transfers_out", Integer),
+	Column("transfers_out_event", Integer),
+	Column("value_form", Float),
+	Column("value_season", Float),
+	Column("web_name", String(50)),
+	Column("minutes", Integer),
+	Column("goals_scored", Integer),
+	Column("assists", Integer),
+	Column("clean_sheets", Integer),
+	Column("goals_conceded", Integer),
+	Column("own_goals", Integer),
+	Column("penalties_saved", Integer),
+	Column("penalties_missed", Integer),
+	Column("yellow_cards", Integer),
+	Column("red_cards", Integer),
+	Column("saves", Integer),
+	Column("bonus", Integer),
+	Column("bps", Integer),
+	Column("influence", Float),
+	Column("creativity", Float),
+	Column("threat", Float),
+	Column("ict_index", Float),
 )
 
 if __name__ == "__main__":
