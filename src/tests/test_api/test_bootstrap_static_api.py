@@ -1,17 +1,9 @@
+from .test_functions import assert_keys_equal
 from .expected_api_structure import bootstrap_static_keys
 from src.fantasy.api.bootstrap_static_api import BootstrapStaticAPI
 
-from json import loads
 
-
-def assert_keys_equal(observed, expected):
-	"""
-	Checks if the received keys of the API response match that which is expected
-	:param observed: Observed API keys
-	:param expected: Expected API keys
-	"""
-	for key in expected:
-		assert key in observed.keys()
+api_connection = BootstrapStaticAPI()
 
 
 def test_api_response():
@@ -20,9 +12,18 @@ def test_api_response():
 	- The API receives a 200 response
 	- The response keys are as expected
 	"""
-	api_response = BootstrapStaticAPI().response
-	api_content = loads(api_response.content)
+	api_response = api_connection.response
+	api_content = api_connection.content
 	assert api_response.status_code == 200
 	assert_keys_equal(api_content, bootstrap_static_keys["base"])
 	assert_keys_equal(api_content["elements"][0], bootstrap_static_keys["elements"])
 	assert_keys_equal(api_content["teams"][0], bootstrap_static_keys["teams"])
+
+
+def test_player_ids(min_players: int = 100):
+	"""
+	Tests that:
+	- We receive at least the minimum number of player id values
+	"""
+	player_ids = api_connection.player_ids()
+	assert len(player_ids) >= min_players
