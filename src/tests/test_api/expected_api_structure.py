@@ -18,3 +18,24 @@ bootstrap_static_keys = {
 		'strength_attack_home', 'strength_attack_away', 'strength_defence_home', 'strength_defence_away'
 	]
 }
+
+player_history_keys = {
+	"base": [
+		'fixtures', 'history', 'history_past'
+	],
+	"fixtures": [
+		'code', 'team_h', 'team_h_score', 'team_a', 'team_a_score', 'event', 'finished', 'minutes',
+		'provisional_start_time', 'kickoff_time', 'event_name', 'is_home', 'difficulty'
+	],
+	"history": [
+		'element', 'fixture', 'opponent_team', 'total_points', 'was_home', 'kickoff_time', 'team_h_score',
+		'team_a_score', 'round', 'minutes', 'goals_scored', 'assists', 'clean_sheets', 'goals_conceded', 'own_goals',
+		'penalties_saved', 'penalties_missed', 'yellow_cards', 'red_cards', 'saves', 'bonus', 'bps', 'influence',
+		'creativity', 'threat', 'ict_index', 'value', 'transfers_balance', 'selected', 'transfers_in', 'transfers_out'
+	],
+	"history_past": [
+		'season_name', 'element_code', 'start_cost', 'end_cost', 'total_points', 'minutes', 'goals_scored', 'assists',
+		'clean_sheets', 'goals_conceded', 'own_goals', 'penalties_saved', 'penalties_missed', 'yellow_cards',
+		'red_cards', 'saves', 'bonus', 'bps', 'influence', 'creativity', 'threat', 'ict_index'
+	]
+}
