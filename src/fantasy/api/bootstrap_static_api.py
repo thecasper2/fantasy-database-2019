@@ -1,5 +1,4 @@
 from .base_api import BaseAPI
-from .apis import api_dict
 
 
 class BootstrapStaticAPI(BaseAPI):
