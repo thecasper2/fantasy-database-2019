@@ -64,7 +64,7 @@ players = Table(
 	Column("special", Boolean),
 	Column("squad_number", String(50)),
 	Column("status", String(50)),
-	Column("team", Integer),
+	Column("team", Integer, ForeignKey("teams.id")),
 	Column("team_code", Integer),
 	Column("total_points", Integer),
 	Column("transfers_in", Integer),
