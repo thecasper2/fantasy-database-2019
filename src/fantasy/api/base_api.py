@@ -1,3 +1,4 @@
+from json import loads
 from requests import get
 
 from .apis import api_dict
@@ -16,3 +17,4 @@ class BaseAPI(object):
 		"""
 		self.api = api_dict[class_name]
 		self.response = get(self.api["url"])
+		self.content = loads(self.response.content)

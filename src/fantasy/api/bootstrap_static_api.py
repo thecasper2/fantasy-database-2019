@@ -19,3 +19,18 @@ class BootstrapStaticAPI(BaseAPI):
 		Using the class name, extract the relevant dict entry for this API
 		"""
 		super(BootstrapStaticAPI, self).__init__(class_name)
+
+	def players(self):
+		"""
+		Returns the current status of all players
+		:return: A list of dicts of all players
+		"""
+		return self.content["elements"]
+
+	def player_ids(self):
+		"""
+		Returns a list of player ids
+		:return:  A list of player_id values
+		TODO: We shouldn't hard-code the field elements here
+		"""
+		return [player["id"] for player in self.players()]
