@@ -31,5 +31,6 @@ class BaseTable(object):
 		"""
 		con = self.database_connection()
 		ins = self.table.insert()
+		con.execute(self.table.delete())
 		con.execute(ins, self.content)
 		con.dispose()

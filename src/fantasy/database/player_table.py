@@ -14,5 +14,5 @@ class PlayerTable(BaseTable):
 		"""
 		super(PlayerTable, self).__init__(
 			table=players,
-			content=BootstrapStaticAPI().content["elements"]
+			content=BootstrapStaticAPI().players()
 		)
