@@ -1,4 +1,3 @@
-from json import loads
 from requests import get
 
 from .apis import api_dict
