@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.1",
     author="Alex Dolphin",
     author_email="alex.dolphin@dolphindata.co.uk",
-    description="Writes Fantasy Football API data to a dtabase",
+    description="Writes Fantasy Football API data to a database",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/thecasper2/fantasy-database-2019",
