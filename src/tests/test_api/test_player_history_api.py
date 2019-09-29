@@ -1,4 +1,4 @@
-from .test_functions import assert_keys_equal
+from .functions import assert_keys_equal
 from .expected_api_structure import player_history_keys
 from src.fantasy.api.player_history_api import PlayerHistoryAPI
 

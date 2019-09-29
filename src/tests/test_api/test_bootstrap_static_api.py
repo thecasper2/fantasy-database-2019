@@ -1,4 +1,4 @@
-from .test_functions import assert_keys_equal
+from .functions import assert_keys_equal
 from .expected_api_structure import bootstrap_static_keys
 from src.fantasy.api.bootstrap_static_api import BootstrapStaticAPI
 
