@@ -1,8 +1,10 @@
 from sqlalchemy import Boolean
 from sqlalchemy import Column
 from sqlalchemy import create_engine
+from sqlalchemy import DateTime
 from sqlalchemy import Float
 from sqlalchemy import ForeignKey
+from sqlalchemy import func
 from sqlalchemy import Integer
 from sqlalchemy import MetaData
 from sqlalchemy import String
@@ -33,6 +35,7 @@ teams = Table(
 	Column("strength_attack_away", Integer),
 	Column("strength_defence_home", Integer),
 	Column("strength_defence_away", Integer),
+	Column("updated_at", DateTime, default=func.utc_timestamp())
 )
 
 players = Table(
@@ -91,6 +94,7 @@ players = Table(
 	Column("creativity", Float),
 	Column("threat", Float),
 	Column("ict_index", Float),
+	Column("updated_at", DateTime, default=func.utc_timestamp()),
 )
 
 player_history = Table(
@@ -127,6 +131,7 @@ player_history = Table(
 	Column("selected", Integer),
 	Column("transfers_in", Integer),
 	Column("transfers_out", Integer),
+	Column("updated_at", DateTime, default=func.utc_timestamp()),
 )
 
 if __name__ == "__main__":

@@ -1,4 +1,6 @@
 from sqlalchemy import create_engine
+from sqlalchemy import func
+from sqlalchemy.dialects.mysql import insert
 
 
 class BaseTable(object):
@@ -24,13 +26,18 @@ class BaseTable(object):
 		"""
 		return create_engine("mysql+mysqldb://root:@localhost/{database}".format(database=self.database_name))
 
-	def update_table(self):
+	def update_table(self, upsert: bool=True):
 		"""
 		Deletes all data from a table, and inserts new content
 		TODO: This should be done with an on duplicate key update statement, but I can't work it out
 		"""
 		con = self.database_connection()
-		ins = self.table.insert()
-		con.execute(self.table.delete())
-		con.execute(ins, self.content)
+		insert_stmt = insert(self.table).values(self.content)
+		if upsert:
+			upsert_vals = {k: insert_stmt.inserted[k] for k, v in self.content[0].items()}
+			upsert_vals.update({"updated_at": func.current_timestamp()})
+			insert_stmt = insert_stmt.on_duplicate_key_update(
+				upsert_vals
+			)
+		con.execute(insert_stmt, self.content)
 		con.dispose()
