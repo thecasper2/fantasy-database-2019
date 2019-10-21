@@ -97,7 +97,7 @@ player_history = Table(
 	"player_history",
 	metadata,
 	Column("element", Integer, primary_key=True),
-	Column("fixture", Integer),
+	Column("fixture", Integer, primary_key=True),
 	Column("opponent_team", Integer),
 	Column("total_points", Integer),
 	Column("was_home", Boolean),
