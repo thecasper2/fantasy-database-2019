@@ -93,7 +93,47 @@ players = Table(
 	Column("ict_index", Float),
 )
 
+player_history = Table(
+	"player_history",
+	metadata,
+	Column("element", Integer, primary_key=True),
+	Column("fixture", Integer),
+	Column("opponent_team", Integer),
+	Column("total_points", Integer),
+	Column("was_home", Boolean),
+	Column("kickoff_time", String(200)),
+	Column("team_h_score", Float),
+	Column("team_a_score", Float),
+	Column("round", Integer),
+	Column("minutes", Integer),
+	Column("goals_scored", Integer),
+	Column("assists", Integer),
+	Column("clean_sheets", Integer),
+	Column("goals_conceded", Integer),
+	Column("own_goals", Integer),
+	Column("penalties_saved", Integer),
+	Column("penalties_missed", Integer),
+	Column("yellow_cards", Integer),
+	Column("red_cards", Integer),
+	Column("saves", Integer),
+	Column("bonus", Integer),
+	Column("bps", Integer),
+	Column("influence", Float),
+	Column("creativity", Float),
+	Column("threat", Float),
+	Column("ict_index", Float),
+	Column("value", Integer),
+	Column("transfers_balance", Integer),
+	Column("selected", Integer),
+	Column("transfers_in", Integer),
+	Column("transfers_out", Integer),
+)
+
 if __name__ == "__main__":
+	"""
+	If this script is invoked directly, it will create all the tables in a MySQL database at localhost, with
+	a database name as set below. A MySQL server must be running for this to work.
+	"""
 	database = "fantasy_football_2019"
 	con = create_engine("mysql+mysqldb://root:@localhost/{database}".format(database=database))
 	metadata.create_all(con)
