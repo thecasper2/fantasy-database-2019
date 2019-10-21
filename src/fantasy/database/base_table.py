@@ -35,7 +35,7 @@ class BaseTable(object):
 		insert_stmt = insert(self.table).values(self.content)
 		if upsert:
 			upsert_vals = {k: insert_stmt.inserted[k] for k, v in self.content[0].items()}
-			upsert_vals.update({"updated_at": func.current_timestamp()})
+			upsert_vals.update({"updated_at": func.now()})
 			insert_stmt = insert_stmt.on_duplicate_key_update(
 				upsert_vals
 			)
