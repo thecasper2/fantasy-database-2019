@@ -20,3 +20,10 @@ class PlayerHistoryAPI(BaseAPI):
 		:param player_id: The player ID for which we make the request
 		"""
 		super(PlayerHistoryAPI, self).__init__(class_name, player_id)
+
+	def history(self):
+		"""
+		Returns the season history of the selected player
+		:return: A list of dicts of all fixtures for the player this season
+		"""
+		return self.content["history"]
