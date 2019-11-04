@@ -11,10 +11,11 @@ class PlayerHistoryTable(BaseTable):
 	A class for performing methods on the team table
 	"""
 
-	def __init__(self):
+	def __init__(self, from_round: int = 1):
 		"""
 		Firstly we get all player ID values from the Bootstrap static API. We then fire a request to the history API
 		for each player ID and bind the result to make a very large data frame of player history.
+		from_round: Limit the results to any fixtures in or above this round
 		"""
 		bootstrap = BootstrapStaticAPI()
 		player_ids = bootstrap.player_ids()
@@ -25,3 +26,4 @@ class PlayerHistoryTable(BaseTable):
 			table=player_history,
 			content=player_history_data
 		)
+		self.content = [c for c in self.content if c["round"] >= from_round]
